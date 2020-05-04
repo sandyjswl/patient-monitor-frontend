@@ -6,12 +6,14 @@ import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
+import { SummaryCardsComponent } from './summary-cards/summary-cards.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PatientInfoComponent
+    PatientInfoComponent,
+    SummaryCardsComponent
   ],
   imports: [
     BrowserModule,

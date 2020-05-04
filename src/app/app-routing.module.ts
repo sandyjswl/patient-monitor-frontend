@@ -1,11 +1,23 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {SummaryCardsComponent} from './summary-cards/summary-cards.component';
+import {PatientInfoComponent} from './patient-info/patient-info.component';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: SummaryCardsComponent
+  },
+  {
+    path: 'patient/:id',
+    component: PatientInfoComponent
+  },
 
-const routes: Routes = [];
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

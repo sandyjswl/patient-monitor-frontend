@@ -1,23 +1,4 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>Document</title>
-</head>
-<body>
-<input (keyup)="onKey($event)">
-<button (click)="sendMsg()">Get Data</button>
 
-<div *ngIf="patientData">
-  <br>
-  <span>Patient Id =  {{patiendId}}</span>
-  <ul>
-    <li *ngFor="let item of patienInfo | keyvalue">
-      <span>{{item.key}}:{{item.value}}</span>
-    </li>
-  </ul>
-</div>
 
-</body>
-</html>
+
+<router-outlet #mainBody></router-outlet>

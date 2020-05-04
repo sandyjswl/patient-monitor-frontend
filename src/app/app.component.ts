@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import * as io from 'socket.io-client';
 
@@ -8,6 +8,7 @@ import * as io from 'socket.io-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('mainBody', {static: false}) mainBody: ElementRef;
   title = 'patient-monitor-forentend';
 
 
@@ -25,21 +26,10 @@ export class AppComponent implements OnInit {
   }
 
 
-  onKey(event: any) { // without type info
-    this.values += event.target.value;
-  }
+
 
   sendMsg() {
-    this.socket.emit('message', this.values);
-    this.socket.on('message', (data) => {
-      this.patientData = data;
-      console.log(data);
-      if (this.patientData) {
-        this.patienInfo = Object.keys(this.patientData).map(key => this.patientData[key])[0];
-        this.patiendId = Object.keys(this.patientData)[0];
-        console.log(this.patienInfo);
-      }
-    });
+
   }
 
 

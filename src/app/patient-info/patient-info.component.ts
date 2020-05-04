@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -7,6 +7,10 @@ import * as io from 'socket.io-client';
   styleUrls: ['./patient-info.component.css']
 })
 export class PatientInfoComponent implements OnInit {
+
+  @Input()
+  patientId: string;
+  private interval;
 
   constructor() {
   }
@@ -17,8 +21,19 @@ export class PatientInfoComponent implements OnInit {
   patiendId;
 
   ngOnInit() {
-    console.log('hello');
-    this.socket.on('get_data', (data) => {
+
+
+    this.refreshData();
+    this.interval = setInterval(() => {
+      this.refreshData();
+    }, 5000);
+
+
+  }
+
+  refreshData() {
+    this.socket.emit('message', this.patiendId);
+    this.socket.on('message', (data) => {
       this.patientData = data;
       console.log(data);
       if (this.patientData) {
@@ -27,7 +42,5 @@ export class PatientInfoComponent implements OnInit {
         console.log(this.patienInfo);
       }
     });
-
   }
-
 }
