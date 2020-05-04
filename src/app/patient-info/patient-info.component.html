@@ -1,0 +1,11 @@
+<p>patient-info works!</p>
+
+<div *ngIf="patientData">
+  <br>
+  <span>Patient Id =  {{patiendId}}</span>
+  <ul>
+    <li *ngFor="let item of patienInfo | keyvalue">
+      <span>{{item.key}}:{{item.value}}</span>
+    </li>
+  </ul>
+</div>
